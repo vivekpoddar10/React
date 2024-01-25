@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
 
 /**
  * Header
@@ -40,25 +40,53 @@ const Header = () => {
 };
 
 const ResturantCard = (props) => {
-  return <div className="resCard">
-    <img src="https://t3.ftcdn.net/jpg/01/14/51/60/360_F_114516029_Z2B6FO30AB6ZR3v9WHXjpXmJScaiLtzk.jpg"></img>
-    <div className="name-cuisine">
-      <div>{props.resturantName}</div>
-      <div>{props.item}</div>
+  const { resturantName, item, price, rating } = props;
+  return (
+    <div className="resCard">
+      <img src="https://t3.ftcdn.net/jpg/01/14/51/60/360_F_114516029_Z2B6FO30AB6ZR3v9WHXjpXmJScaiLtzk.jpg"></img>
+      <div className="name-cuisine">
+        <div>{resturantName}</div>
+        <div>{item}</div>
+      </div>
+      <div className="price-rating">
+        <div className="price">{price}</div>
+        <div className="rating">{rating}⭐</div>
+      </div>
     </div>
-    <div className="price-rating">
-      <div className="price">{props.price}</div>
-      <div className="rating">{props.rating}⭐</div>
-    </div>
-  </div>;
+  );
 };
+
+const restList = [
+  {
+    resturantName: "Meghna Foods",
+    item: "Biryani",
+    price: "350",
+    rating: "4.5",
+  },
+  {
+    resturantName: "Paapi Pet",
+    item: "Biryani",
+    price: "380",
+    rating: "4.8",
+  },
+];
 
 const Body = () => {
   return (
     <div className="body">
       <div className="search">Search</div>
       <div className="resturant-container">
-        <ResturantCard resturantName="Meghna Foods" item="Biryani" price="350" rating="4.5"/>
+        {
+          /**
+           * ? can we use .forEach() in place of .map()
+           * * If we will use, ReactComponent will not be thrown
+           * * so, a component will never be added inside this div
+           * * so, the changes will never be displayed
+           */
+          restList.map((value, index) => (
+            <ResturantCard key={index} {...value} />
+          ))
+        }
       </div>
     </div>
   );
@@ -78,5 +106,5 @@ const AppLayout = () => {
   );
 };
 
-const root = ReactDOM.createRoot(document.querySelector("body"));
-root.render(<AppLayout />);
+const root = ReactDOM.createRoot(document.getElementById("app"));
+root.render(<AppLayout/>)
