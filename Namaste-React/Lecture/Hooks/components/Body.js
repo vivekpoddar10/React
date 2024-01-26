@@ -1,14 +1,22 @@
 import Resturant from "./resturant";
 import REST_LIST from "../utils/mockData";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Body = () => {
   let [restList, setResList] = useState(REST_LIST);
 
-  /**
-   * similar to
-   *    let restList = REST_LIST;
-   */
+  const fetchData = async () => {
+    const data = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING");
+    const json = await data.json();
+    console.log(json);
+  }
+
+  useEffect(fetchData, [])
+
+
+  
+
 
   return (
     <div className="body">

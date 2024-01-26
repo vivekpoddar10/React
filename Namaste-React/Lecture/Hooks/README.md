@@ -1,14 +1,14 @@
 ### App Layout
-Header
+- Header
     - logo
     - nav items
-Body
+- Body
     - search
     - food item container
          - food image
          - name, rating
          - price
-footer
+- footer
     - copyright
     - links
     - address
@@ -24,24 +24,39 @@ We should structure our file properly
 ### Types of Export
 There are 2 types of import/ export
 - Default: 
-    import <em>Component</em> from <em>file_location</em>
-    export default <em>Component</em>
+    - export default <em>Component</em>
+    - import <em>Component</em> from <em>file_location</em>
 
 
-- Named Export: 
-    import {<em>Component</em>} from <em>file_location</em>
-    export const <em>Component</em>
+- Named: 
+    - export const <em>Component</em>
+    - import {<em>Component</em>} from <em>file_location</em>
 
 ## React Hooks
 - Normal JS utility function
 - useState()
         - create superpowerfull state variable
         - whenever the state variable changes, react re-render the elements
-        - 
+        - syntax: const [item, setItem] = useState([]);
+        - useState() return a array of length 2
+            - at 0 index, the default value by which the varaible is initialized. In this case, an empty object
+            - at 1 index, setter function, which will trigger the change in value and render the change
 - useEffect()
+        - @param (callback function, dependency array)
+        - it is use to call the callback funtuin after all the element are rendered
 
 ### Reconcilation Algorithm (React Fiber)
 - Introduced in React16
+- Incremental Rendering - split rendering work into chunks
 - React use Virtual DOM (an object that represents Original DOM)
 - whenever the object is changed, it finds the difference between previous VirtualDOM and new VirtualDOM, using <em>Diff Algorithm</em>
 - It updates the original DOM i.e. UI
+
+### Signal Responsibility Project
+
+### How React (UI) connects to other services in microservices
+There are two ways:
+    - Page Load -> API Call, wait for data to come -> render the element
+    - Page Load -> render all the basic element -> API Call -> re-render the element with the data
+
+React uses the second approach
