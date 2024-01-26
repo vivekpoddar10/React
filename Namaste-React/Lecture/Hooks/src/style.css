@@ -1,0 +1,58 @@
+.header{
+    display: flex;
+    border: 1px solid black;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.logo img{
+    width: 5em;
+}
+
+.nav-items > ul{
+    display: flex;
+    justify-content: space-evenly;
+    
+}
+
+.nav-items li{
+    list-style: none;
+    margin: 0 2px;
+    padding: 2px;
+}
+
+.body{
+    margin: 3px;
+    padding: 3px;
+    border: 1px solid black;
+}
+
+.filterBtn{
+    margin: 10px;
+    padding: 5px;
+    background-color: blue;
+    color: white;
+    border-radius: 5px;
+}
+
+.filterBtn:hover{
+    cursor: pointer;
+}
+
+.resturant-list{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.resturant{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    margin: 10px;
+    padding: 5px;
+    width: 200px;
+}
+
