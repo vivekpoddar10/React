@@ -1,9 +1,8 @@
 import Resturant from "./resturant";
-import REST_LIST from "../utils/mockData";
 import { useEffect, useState } from "react";
 
 const Body = () => {
-  let [restList, setResList] = useState(REST_LIST);
+  let [restList, setResList] = useState([{info:{}}]);
 
   const fetchData = async () => {
     const data = await fetch(
@@ -30,7 +29,7 @@ const Body = () => {
              * when we do this, and use resList inside other div, changes will not be shown
              */
             setResList(
-              restList.filter((value) => value.rating > 4).sort(function (
+              restList.filter((value) => value.info.avgRating >= 4.5).sort(function (
                 first,
                 second
               ) {
