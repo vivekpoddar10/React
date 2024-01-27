@@ -1,18 +1,25 @@
 import React from "react";
+import { IMG_URL } from "../utils/constants";
 
 const Resturant = (props) => {
-  const { resturantName, item, price, rating } = props;
+  const { info } = props.info;
+  console.log(info);
+  const { name, locality, avgRating, costForTwo, cloudinaryImageId
+  } = info;
+  console.log(cloudinaryImageId);
   return (
     <div className="resturant">
-      <div className="food-image"></div>
+      <div className="food-image">
+        <img src={IMG_URL + cloudinaryImageId}></img>
+      </div>
       <div className="food-info">
         <div className="food-res">
-          <div className="res">{resturantName}</div>
-          <div className="food">{item}</div>
+          <div className="res">{name}</div>
+          <div className="food">{locality}</div>
         </div>
         <div className="price-rating">
-          <div className="price">{price}</div>
-          <div className="rating">{rating}</div>
+          <div className="price">{costForTwo}</div>
+          <div className="rating">{avgRating}</div>
         </div>
       </div>
     </div>

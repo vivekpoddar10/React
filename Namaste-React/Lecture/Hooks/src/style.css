@@ -56,3 +56,16 @@
     width: 200px;
 }
 
+.food-image{
+    height: 120px;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.food-image > img {
+    height: 100px;
+    width: 100%;
+}
+

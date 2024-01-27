@@ -7,16 +7,15 @@ const Body = () => {
 
   const fetchData = async () => {
     const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING");
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING"
+    );
     const json = await data.json();
-    console.log(json);
-  }
+    setResList (
+      json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants
+    );
+  };
 
-  useEffect(fetchData, [])
-
-
-  
-
+  useEffect(fetchData, []);
 
   return (
     <div className="body">
@@ -31,7 +30,7 @@ const Body = () => {
              * when we do this, and use resList inside other div, changes will not be shown
              */
             setResList(
-              REST_LIST.filter((value) => value.rating > 4).sort(function (
+              restList.filter((value) => value.rating > 4).sort(function (
                 first,
                 second
               ) {
@@ -49,7 +48,7 @@ const Body = () => {
       </div>
       <div className="resturant-list">
         {restList.map((resturant) => (
-          <Resturant {...resturant} />
+          <Resturant info= {resturant} />
         ))}
       </div>
     </div>
